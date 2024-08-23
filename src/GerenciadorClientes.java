@@ -58,5 +58,24 @@ public class GerenciadorClientes {
 
         return true;
     }
-	
+
+	//Metodo Excluir
+	public boolean excluir(int id) {
+		String sql = "DELETE FROM TB_CLIENTES WHERE id_cliente = ?";
+
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.execute();
+        } catch (SQLException e) {
+			
+            e.printStackTrace();
+        }
+
+		return true;
+    }
+
+
+
+
 }
