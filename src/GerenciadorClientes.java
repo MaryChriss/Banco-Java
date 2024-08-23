@@ -68,8 +68,9 @@ public class GerenciadorClientes {
 			ps.setInt(1, id);
 			ps.execute();
         } catch (SQLException e) {
-			
+			System.err.println("Erro ao excluir o Cliente");
             e.printStackTrace();
+			return false;
         }
 
 		return true;
