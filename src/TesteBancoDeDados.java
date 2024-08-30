@@ -6,12 +6,17 @@ public class TesteBancoDeDados {
         //criando um gerenciador de clientes
         GerenciadorClientes gc = new GerenciadorClientes();
 
+        //Criando um cliente
         //Cliente cliente = new Cliente(3,"Miguel", "Freitas");
-
         //System.out.println(gc.inserir(cliente) ?
         //"Cliente adicionado!" : "Cliente NÃO adicionado!");
 
 
-        System.out.println(gc.excluir(99) ? "Cliente removido" : "Cliente não removido");
+        //Delete:
+        //System.out.println(gc.excluir(1) ? "Cliente removido" : "Cliente não removido");
+
+        //update:
+        Cliente cliente = new Cliente(3, "Miguel", "Francisco");
+        gc.atualizar(cliente);
     }
 }

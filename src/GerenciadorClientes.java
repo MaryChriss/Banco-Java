@@ -83,7 +83,35 @@ public class GerenciadorClientes {
 		return true;
 	}
 
+	//metodo atualizar
+	public void atualizar (Cliente cliente) {
+		String sql = "UPDATE TB_CLIENTES SET nome = ?, sobrenome = ? WHERE id_cliente = ?";
 
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, cliente.getNome());
+			ps.setString(2, cliente.getSobrenome());
+			ps.setInt(3, cliente.getId());
+			ps.execute();
+
+		} catch (SQLException e) {
+			if (conn == null) {
+				System.err.println("Conexão nula! - atualizar");
+			} else {
+				System.out.println("Erro na instrução PreparedStatment");
+			}
+            e.printStackTrace();
+        }finally {
+			if(conn != null) {
+				System.out.println("Fechando a conexão....");
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+		}
+	}
 
 
 }
