@@ -1,4 +1,6 @@
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TesteBancoDeDados {
     public static void main(String[] args) throws SQLException {
@@ -16,7 +18,11 @@ public class TesteBancoDeDados {
         //System.out.println(gc.excluir(1) ? "Cliente removido" : "Cliente não removido");
 
         //update:
-        Cliente cliente = new Cliente(3, "Miguel", "Francisco");
-        gc.atualizar(cliente);
+        //Cliente cliente = new Cliente(3, "Miguel", "Francisco");
+        //gc.atualizar(cliente);
+
+        System.out.println("Objeto: " + gc.listar());
     }
 }
+
+

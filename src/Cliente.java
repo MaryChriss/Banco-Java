@@ -40,7 +40,7 @@ public class Cliente {
 	}
 	
 	public String toString() {
-		return "id: " + this.getId() + "\nNome: " + getNome() 
+		return "\n id: " + this.getId() + "\nNome: " + getNome()
 		+ "\nSobrenome: " + getSobrenome();
 	}
 	

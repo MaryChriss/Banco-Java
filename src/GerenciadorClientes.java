@@ -1,6 +1,9 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import oracle.jdbc.pool.OracleDataSource;
 
@@ -113,5 +116,36 @@ public class GerenciadorClientes {
 		}
 	}
 
+	public List<Cliente> listar() {
+		List<Cliente> clientes = new ArrayList<>();
+
+		String sql = "SELECT * FROM TB_CLIENTES";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+
+			ResultSet rs = ps.executeQuery();
+
+			while(rs.next()) {
+				int id = rs.getInt(1);
+				String nome = rs.getString(2); //acesso pelo indice da tabela
+				String sobrenome = rs.getString("sobrenome"); //acesso pelo nome da coluna (melhor opção caso ocorra alteração na tabela
+
+				clientes.add(new Cliente(id, nome, sobrenome));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				conn.close();
+			}catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+        return clientes;
+    }
+
 
 }
+
